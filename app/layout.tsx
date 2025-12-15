@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   alternates: {
-    canonical: "https://manabii.app/",
+    canonical: "https://kitsura.dev/",
     languages: {
-      ja: "https://manabii.app/",
-      en: "https://manabii.app/en",
-      "x-default": "https://manabii.app/",
+      ja: "https://kitsura.dev/",
+      en: "https://kitsura.dev/en",
+      "x-default": "https://kitsura.dev/",
     },
   },
 };
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "manabii.dev";
+  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "kitsura.dev";
   const isProd = process.env.NODE_ENV === "production";
 
   return (

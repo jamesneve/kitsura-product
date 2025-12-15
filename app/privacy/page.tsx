@@ -4,14 +4,14 @@ import PageHeader from "@/components/PageHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "プライバシーポリシー | Manabii",
-  description: "Manabii アプリおよび Web サイトのプライバシーポリシー。",
+  title: "プライバシーポリシー | Kitsura",
+  description: "Kitsura アプリおよび Web サイトのプライバシーポリシー。",
   alternates: {
-    canonical: "https://manabii.app/privacy",
+    canonical: "https://kitsura.dev/privacy",
     languages: {
-      ja: "https://manabii.app/privacy",
-      en: "https://manabii.app/en/privacy",
-      "x-default": "https://manabii.app/privacy",
+      ja: "https://kitsura.dev/privacy",
+      en: "https://kitsura.dev/en/privacy",
+      "x-default": "https://kitsura.dev/privacy",
     },
   },
 };
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
       <section className="mt-6 space-y-4 leading-relaxed">
         <p>
           本プライバシーポリシー（以下「本ポリシー」）は、Aisara（以下「当社」）が提供する
-          「Manabii」<span className="whitespace-nowrap">（iOSアプリおよび Web サイト）</span>に適用されます。
+          「Kitsura」<span className="whitespace-nowrap">（iOSアプリおよび Web サイト）</span>に適用されます。
           本ポリシーでは、収集する情報、利用目的、保存期間、第三者提供、安全管理措置、
           お客様の権利、問い合わせ方法等について説明します。
         </p>
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
             <a href="mailto:support@aisara.jp" className="underline">support@aisara.jp</a>
           </p>
           <p className="mt-3 font-medium">件名：</p>
-          <p>【Manabii】データ削除（またはエクスポート）希望</p>
+          <p>【Kitsura】データ削除（またはエクスポート）希望</p>
           <p className="mt-3 font-medium">本文（必要事項）：</p>
           <ul className="list-disc pl-6">
             <li>ご利用のメールアドレス（登録がある場合）</li>

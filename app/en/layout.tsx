@@ -7,7 +7,7 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Manabii – Make English parenting visible with simple daily tracking",
+  title: "Kitsura – Make English parenting visible with simple daily tracking",
   description:
     "Log the balance of English and Japanese with a single slider. See weekly trends and track words to feel daily progress.",
   manifest: "/manifest.webmanifest",
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   alternates: {
-    canonical: "https://manabii.app/en",
+    canonical: "https://kitsura.dev/en",
     languages: {
-      ja: "https://manabii.app/",
-      en: "https://manabii.app/en",
-      "x-default": "https://manabii.app/",
+      ja: "https://kitsura.dev/",
+      en: "https://kitsura.dev/en",
+      "x-default": "https://kitsura.dev/",
     },
   },
 };
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "manabii.dev";
+  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "kitsura.dev";
   const isProd = process.env.NODE_ENV === "production";
 
   return (

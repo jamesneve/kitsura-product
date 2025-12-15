@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-const SITE = "https://manabii.dev";
+const SITE = "https://kitsura.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/support", "/privacy", "/terms", "/delete-account"];

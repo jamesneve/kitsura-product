@@ -4,14 +4,14 @@ import PageHeader from "@/components/PageHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "利用規約 | Manabii",
-  description: "Manabii アプリおよび Web サイトの利用規約。",
+  title: "利用規約 | Kitsura",
+  description: "Kitsura アプリおよび Web サイトの利用規約。",
   alternates: {
-    canonical: "https://manabii.app/terms",
+    canonical: "https://kitsura.dev/terms",
     languages: {
-      ja: "https://manabii.app/terms",
-      en: "https://manabii.app/en/terms",
-      "x-default": "https://manabii.app/terms",
+      ja: "https://kitsura.dev/terms",
+      en: "https://kitsura.dev/en/terms",
+      "x-default": "https://kitsura.dev/terms",
     },
   },
 };
@@ -29,7 +29,7 @@ export default function TermsPage() {
       <section className="mt-6 space-y-4 leading-relaxed">
         <p>
           本利用規約（以下「本規約」）は、Aisara（以下「当社」）が提供する
-          「Manabii」（iOSアプリおよび Web サイト、以下総称して「本サービス」）の利用条件を定めるものです。
+          「Kitsura」（iOSアプリおよび Web サイト、以下総称して「本サービス」）の利用条件を定めるものです。
           本サービスの利用者（以下「ユーザー」）は、本規約に同意のうえ本サービスを利用するものとします。
         </p>
         <p className="text-sm text-slate-600">
@@ -52,7 +52,7 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold">2. 定義</h2>
         <ul className="mt-2 list-disc pl-6 space-y-1">
           <li>
-            「アプリ」：iOS 向けに提供される Manabii のモバイルアプリケーション。
+            「アプリ」：iOS 向けに提供される Kitsura のモバイルアプリケーション。
           </li>
           <li>
             「ユーザーコンテンツ」：ユーザーが入力または送信するデータ（英語・日本語バランスの記録、単語メモ、メモ等）。

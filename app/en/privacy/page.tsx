@@ -4,14 +4,14 @@ import PageHeaderEN from "@/components/PageHeaderEN";
 import SiteFooterEN from "@/components/SiteFooterEN";
 
 export const metadata = {
-  title: "Privacy Policy | Manabii",
-  description: "Privacy Policy for the Manabii app and website.",
+  title: "Privacy Policy | Kitsura",
+  description: "Privacy Policy for the Kitsura app and website.",
   alternates: {
-    canonical: "https://manabii.app/en/privacy",
+    canonical: "https://kitsura.dev/en/privacy",
     languages: {
-      ja: "https://manabii.app/privacy",
-      en: "https://manabii.app/en/privacy",
-      "x-default": "https://manabii.app/privacy",
+      ja: "https://kitsura.dev/privacy",
+      en: "https://kitsura.dev/en/privacy",
+      "x-default": "https://kitsura.dev/privacy",
     },
   },
 };
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
       {/* Scope */}
       <section className="mt-6 space-y-4 leading-relaxed">
         <p>
-          This Privacy Policy (“Policy”) applies to the “Manabii” iOS
+          This Privacy Policy (“Policy”) applies to the “Kitsura” iOS
           application and website provided by Aisara (“we,” “our,” or “us”).
           This Policy explains what information we collect, how we use it, how
           long we retain it, when it may be shared, how it is protected, and
@@ -164,7 +164,7 @@ export default function PrivacyPage() {
             </a>
           </p>
           <p className="mt-3 font-medium">Subject:</p>
-          <p>[Manabii] Request for Data Deletion (or Export)</p>
+          <p>[Kitsura] Request for Data Deletion (or Export)</p>
           <p className="mt-3 font-medium">Body (required details):</p>
           <ul className="list-disc pl-6">
             <li>Your email address (if registered)</li>

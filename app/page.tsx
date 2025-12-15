@@ -11,7 +11,7 @@ import SiteFooter from "@/components/SiteFooter";
  *  ========================= */
 const VERSION = "lp-download-v1";
 const IOS_APP_URL = "https://apps.apple.com/app/id6753667549";         
-const ANDROID_PLAY_URL = "https://play.google.com/store/apps/details?id=jp.aisara.manabii&hl=ja"; // ← added
+const ANDROID_PLAY_URL = "https://play.google.com/store/apps/details?id=jp.aisara.kitsura&hl=ja"; // ← added
 const ANDROID_APK_URL = "";                                            
 const CONTACT_EMAIL = "support@aisara.jp";
 
@@ -106,8 +106,8 @@ export default function EnglishBalanceLandingJP() {
       <section className="mx-auto max-w-5xl px-6 pt-16 pb-8">
         <div className="flex items-start gap-4">
           <Image
-            src="/manabii/app_icon.png"
-            alt="Manabii アイコン"
+            src="/kitsura/app_icon.png"
+            alt="Kitsura アイコン"
             width={72}
             height={72}
             className="rounded-2xl shadow-sm"
@@ -241,9 +241,9 @@ export default function EnglishBalanceLandingJP() {
         <h2 className="text-2xl font-semibold">アプリ画面</h2>
         <p className="mt-2 text-sm text-slate-700">実際のスクリーンショットです。</p>
         <div className="mt-5 grid gap-6 sm:grid-cols-3">
-          <Shot src="/manabii/iphone_1.png" alt="ホーム（当日のバランス・最近の単語）" />
-          <Shot src="/manabii/iphone_2.png" alt="レビュー（週次バランス）" />
-          <Shot src="/manabii/iphone_3.png" alt="学習した単語一覧" />
+          <Shot src="/kitsura/iphone_1.png" alt="ホーム（当日のバランス・最近の単語）" />
+          <Shot src="/kitsura/iphone_2.png" alt="レビュー（週次バランス）" />
+          <Shot src="/kitsura/iphone_3.png" alt="学習した単語一覧" />
         </div>
       </section>
 

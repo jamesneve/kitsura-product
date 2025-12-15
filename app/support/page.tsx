@@ -4,14 +4,14 @@ import PageHeader from "@/components/PageHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "サポート | Manabii",
-  description: "Manabii のサポート情報、FAQ、お問い合わせ、データ削除依頼の手順。",
+  title: "サポート | Kitsura",
+  description: "Kitsura のサポート情報、FAQ、お問い合わせ、データ削除依頼の手順。",
   alternates: {
-    canonical: "https://manabii.app/support",
+    canonical: "https://kitsura.dev/support",
     languages: {
-      ja: "https://manabii.app/support",
-      en: "https://manabii.app/en/support",
-      "x-default": "https://manabii.app/support",
+      ja: "https://kitsura.dev/support",
+      en: "https://kitsura.dev/en/support",
+      "x-default": "https://kitsura.dev/support",
     },
   },
 };
@@ -22,7 +22,7 @@ export default function SupportPage() {
     <>
     <PageHeader />
     <main className="mx-auto max-w-3xl px-6 py-12 text-slate-800">
-      <h1 className="text-3xl font-semibold">Manabii サポート</h1>
+      <h1 className="text-3xl font-semibold">Kitsura サポート</h1>
       <p className="mt-2 text-sm text-slate-500">最終更新日：{updated}</p>
 
       <section className="mt-6 space-y-6 leading-relaxed">
@@ -54,7 +54,7 @@ export default function SupportPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-xl font-semibold">アプリ情報</h2>
           <ul className="mt-2 list-disc pl-6 space-y-1 text-slate-700">
-            <li>アプリ名：Manabii — 英語×日本語 露出バランス</li>
+            <li>アプリ名：Kitsura — 英語×日本語 露出バランス</li>
             <li>対象OS：iOS 15 以上（今後変更の可能性あり）</li>
             <li>
               バージョン確認：
@@ -117,7 +117,7 @@ export default function SupportPage() {
               まずは端末の再起動、アプリの再起動、ネットワーク切替（Wi-Fi⇄4G/5G）をお試しください。
             </li>
             <li>
-              iOS の設定 → Manabii → モバイルデータ通信 が有効かをご確認ください。
+              iOS の設定 → Kitsura → モバイルデータ通信 が有効かをご確認ください。
             </li>
             <li>
               それでも解決しない場合は、再現手順・発生日時・画面のスクリーンショットをご提供ください。
@@ -140,7 +140,7 @@ export default function SupportPage() {
               </a>
             </p>
             <p className="mt-3 font-medium">件名：</p>
-            <p>【Manabii】データ削除（またはエクスポート）希望</p>
+            <p>【Kitsura】データ削除（またはエクスポート）希望</p>
             <p className="mt-3 font-medium">本文（必要事項）：</p>
             <ul className="list-disc pl-6">
               <li>ご利用のメールアドレス（登録がある場合）</li>

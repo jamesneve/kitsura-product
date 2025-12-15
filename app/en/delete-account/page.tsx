@@ -4,15 +4,15 @@ import PageHeaderEN from "@/components/PageHeaderEN";
 import SiteFooterEN from "@/components/SiteFooterEN";
 
 export const metadata = {
-  title: "How to Delete Your Account | Manabii",
+  title: "How to Delete Your Account | Kitsura",
   description:
-    "Instructions for requesting account deletion (including Firebase anonymous login) for Manabii by Aisara (JP). Includes details on data subject to deletion, retention periods, and contact information.",
+    "Instructions for requesting account deletion (including Firebase anonymous login) for Kitsura by Aisara (JP). Includes details on data subject to deletion, retention periods, and contact information.",
   alternates: {
-    canonical: "https://manabii.app/en/delete-account",
+    canonical: "https://kitsura.dev/en/delete-account",
     languages: {
-      ja: "https://manabii.app/delete-account",
-      en: "https://manabii.app/en/delete-account",
-      "x-default": "https://manabii.app/delete-account",
+      ja: "https://kitsura.dev/delete-account",
+      en: "https://kitsura.dev/en/delete-account",
+      "x-default": "https://kitsura.dev/delete-account",
     },
   },
 };
@@ -20,7 +20,7 @@ export const metadata = {
 export default function DeleteAccountPageEN() {
   const updated = "2025-10-15"; // Update if necessary
   const developer = "Aisara (JP)";
-  const appName = "Manabii — English–Japanese Exposure Balance";
+  const appName = "Kitsura — English–Japanese Exposure Balance";
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function DeleteAccountPageEN() {
               <a
                 className="underline"
                 href={`mailto:support@aisara.jp?subject=${encodeURIComponent(
-                  "[Manabii] Account Deletion Request (with Anonymous Login ID)"
+                  "[Kitsura] Account Deletion Request (with Anonymous Login ID)"
                 )}&body=${encodeURIComponent(
                   [
                     "Please fill in the following information and send:",

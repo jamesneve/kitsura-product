@@ -4,14 +4,14 @@ import PageHeaderEN from "@/components/PageHeaderEN";
 import SiteFooterEN from "@/components/SiteFooterEN";
 
 export const metadata = {
-  title: "Terms of Use | Manabii",
-  description: "Terms of Use for the Manabii app and website.",
+  title: "Terms of Use | Kitsura",
+  description: "Terms of Use for the Kitsura app and website.",
   alternates: {
-    canonical: "https://manabii.app/en/terms",
+    canonical: "https://kitsura.dev/en/terms",
     languages: {
-      ja: "https://manabii.app/terms",
-      en: "https://manabii.app/en/terms",
-      "x-default": "https://manabii.app/terms",
+      ja: "https://kitsura.dev/terms",
+      en: "https://kitsura.dev/en/terms",
+      "x-default": "https://kitsura.dev/terms",
     },
   },
 };
@@ -29,7 +29,7 @@ export default function TermsPageEN() {
         <section className="mt-6 space-y-4 leading-relaxed">
           <p>
             These Terms of Use (the “Terms”) set forth the conditions for using
-            the “Manabii” service (the iOS app and website, collectively the “Service”)
+            the “Kitsura” service (the iOS app and website, collectively the “Service”)
             provided by Aisara (“we,” “our,” or “us”). Users of the Service (“Users”)
             agree to these Terms before using the Service.
           </p>
@@ -56,7 +56,7 @@ export default function TermsPageEN() {
           <h2 className="text-xl font-semibold">2. Definitions</h2>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>
-              “App”: The Manabii mobile application provided for iOS.
+              “App”: The Kitsura mobile application provided for iOS.
             </li>
             <li>
               “User Content”: Data input or transmitted by Users (e.g., English–Japanese

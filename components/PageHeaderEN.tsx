@@ -33,14 +33,14 @@ export default function PageHeaderEN({ basePath = "/en" }: Props) {
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
         <Link href={to("/")} className="flex items-center gap-2 hover:opacity-90">
           <Image
-            src="/manabii/app_icon.png"
-            alt="Manabii icon"
+            src="/kitsura/app_icon.png"
+            alt="Kitsura icon"
             width={28}
             height={28}
             className="rounded-lg"
             priority
           />
-          <span className="text-sm font-semibold text-slate-800">Manabii</span>
+          <span className="text-sm font-semibold text-slate-800">Kitsura</span>
         </Link>
 
         <div className="flex items-center gap-4">

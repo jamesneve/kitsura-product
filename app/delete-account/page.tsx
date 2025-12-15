@@ -4,15 +4,15 @@ import PageHeader from "@/components/PageHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "アカウント削除の手順 | Manabii",
+  title: "アカウント削除の手順 | Kitsura",
   description:
-    "Manabii（提供：Aisara (JP)）のアカウント（Firebase 匿名ログイン含む）削除依頼の手順。削除対象データ・保管期間の説明と連絡先。",
+    "Kitsura（提供：Aisara (JP)）のアカウント（Firebase 匿名ログイン含む）削除依頼の手順。削除対象データ・保管期間の説明と連絡先。",
   alternates: {
-    canonical: "https://manabii.app/delete-account",
+    canonical: "https://kitsura.dev/delete-account",
     languages: {
-      ja: "https://manabii.app/delete-account",
-      en: "https://manabii.app/en/delete-account",
-      "x-default": "https://manabii.app/delete-account",
+      ja: "https://kitsura.dev/delete-account",
+      en: "https://kitsura.dev/en/delete-account",
+      "x-default": "https://kitsura.dev/delete-account",
     },
   },
 };
@@ -20,7 +20,7 @@ export const metadata = {
 export default function DeleteAccountPage() {
   const updated = "2025-10-15"; // 必要に応じて更新
   const developer = "Aisara (JP)";
-  const appName = "Manabii — 英語×日本語 露出バランス";
+  const appName = "Kitsura — 英語×日本語 露出バランス";
 
   return (
     <>
@@ -73,7 +73,7 @@ export default function DeleteAccountPage() {
             <a
               className="underline"
               href={`mailto:support@aisara.jp?subject=${encodeURIComponent(
-                "【Manabii】アカウント削除希望（匿名ログインID記載）"
+                "【Kitsura】アカウント削除希望（匿名ログインID記載）"
               )}&body=${encodeURIComponent(
                 [
                   "以下の内容を記入して送信してください：",

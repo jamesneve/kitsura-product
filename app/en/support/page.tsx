@@ -4,15 +4,15 @@ import PageHeaderEN from "@/components/PageHeaderEN";
 import SiteFooterEN from "@/components/SiteFooterEN";
 
 export const metadata = {
-  title: "Support | Manabii",
+  title: "Support | Kitsura",
   description:
-    "Support information, FAQ, contact details, and data deletion/export procedures for Manabii.",
+    "Support information, FAQ, contact details, and data deletion/export procedures for Kitsura.",
   alternates: {
-    canonical: "https://manabii.app/en/support",
+    canonical: "https://kitsura.dev/en/support",
     languages: {
-      ja: "https://manabii.app/support",
-      en: "https://manabii.app/en/support",
-      "x-default": "https://manabii.app/support",
+      ja: "https://kitsura.dev/support",
+      en: "https://kitsura.dev/en/support",
+      "x-default": "https://kitsura.dev/support",
     },
   },
 };
@@ -23,7 +23,7 @@ export default function SupportPageEN() {
     <>
       <PageHeaderEN />
       <main className="mx-auto max-w-3xl px-6 py-12 text-slate-800">
-        <h1 className="text-3xl font-semibold">Manabii Support</h1>
+        <h1 className="text-3xl font-semibold">Kitsura Support</h1>
         <p className="mt-2 text-sm text-slate-500">Last updated: {updated}</p>
 
         <section className="mt-6 space-y-6 leading-relaxed">
@@ -55,7 +55,7 @@ export default function SupportPageEN() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-xl font-semibold">App Information</h2>
             <ul className="mt-2 list-disc pl-6 space-y-1 text-slate-700">
-              <li>App name: Manabii — English–Japanese Exposure Balance</li>
+              <li>App name: Kitsura — English–Japanese Exposure Balance</li>
               <li>Supported OS: iOS 15 or later (subject to change)</li>
               <li>
                 To check your app version:
@@ -124,7 +124,7 @@ export default function SupportPageEN() {
                 or switching networks (Wi-Fi ⇄ 4G/5G).
               </li>
               <li>
-                On iOS, go to Settings → Manabii → Mobile Data, and make sure it’s enabled.
+                On iOS, go to Settings → Kitsura → Mobile Data, and make sure it’s enabled.
               </li>
               <li>
                 If the issue persists, please provide the reproduction steps,
@@ -148,7 +148,7 @@ export default function SupportPageEN() {
                 </a>
               </p>
               <p className="mt-3 font-medium">Subject:</p>
-              <p>[Manabii] Data Deletion (or Export) Request</p>
+              <p>[Kitsura] Data Deletion (or Export) Request</p>
               <p className="mt-3 font-medium">Message body (required info):</p>
               <ul className="list-disc pl-6">
                 <li>Your email address (if registered)</li>
