@@ -1,0 +1,362 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
+import SiteFooter from "@/components/SiteFooter";
+
+/** =========================
+ *  CONFIG: fill these in
+ *  ========================= */
+const VERSION = "lp-download-v1";
+const IOS_APP_URL = "https://apps.apple.com/app/id6753667549";         
+const ANDROID_PLAY_URL = "https://play.google.com/store/apps/details?id=jp.aisara.manabii&hl=ja"; // ← added
+const ANDROID_APK_URL = "";                                            
+const CONTACT_EMAIL = "support@aisara.jp";
+
+/** =========================
+ *  Landing page (JP)
+ *  ========================= */
+export default function EnglishBalanceLandingJP() {
+  const [utm, setUtm] = React.useState<Record<string, string>>({});
+  const [flash, setFlash] = React.useState<{open: boolean; kind: 'success'|'error'; text: string}>({ open: false, kind: "success", text: "" });
+  const [isMobile, setIsMobile] = React.useState<boolean | null>(null);
+
+  React.useEffect(() => {
+    // very light UA check; good enough for this CTA split
+    const ua = navigator.userAgent || "";
+    const mobile = /iPhone|iPad|iPod|Android/i.test(ua);
+    setIsMobile(mobile);
+  }, []);
+  
+  const iosUrlWithUtm = React.useMemo(() => {
+    if (!IOS_APP_URL) return "";
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    try {
+      const u = new URL(IOS_APP_URL);
+      const current = new URLSearchParams(search);
+      current.forEach((v, k) => u.searchParams.set(k, v));
+      return u.toString();
+    } catch {
+      return IOS_APP_URL + (search || "");
+    }
+  }, []);
+
+  // === NEW: Android URL with UTM passthrough ===
+  const androidUrlWithUtm = React.useMemo(() => {
+    if (!ANDROID_PLAY_URL) return "";
+    const search = typeof window !== "undefined" ? window.location.search : "";
+    try {
+      const u = new URL(ANDROID_PLAY_URL);
+      const current = new URLSearchParams(search);
+      current.forEach((v, k) => u.searchParams.set(k, v));
+      return u.toString();
+    } catch {
+      return ANDROID_PLAY_URL + (search || "");
+    }
+  }, []);
+
+  const onCopyIosLink = async () => {
+    try {
+      await navigator.clipboard.writeText(iosUrlWithUtm);
+      track("qr_copy_click", { ...utm, store: "ios", version: VERSION });
+      setFlash({ open: true, kind: "success", text: "リンクをコピーしました" });
+    } catch {
+      setFlash({ open: true, kind: "error", text: "コピーに失敗しました" });
+    }
+  };
+
+  // === NEW: Android copy link ===
+  const onCopyAndroidLink = async () => {
+    try {
+      await navigator.clipboard.writeText(androidUrlWithUtm);
+      track("qr_copy_click", { ...utm, store: "android", version: VERSION });
+      setFlash({ open: true, kind: "success", text: "リンクをコピーしました" });
+    } catch {
+      setFlash({ open: true, kind: "error", text: "コピーに失敗しました" });
+    }
+  };
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const entries: Record<string, string> = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach((k) => {
+      const v = params.get(k);
+      if (v) entries[k] = v;
+    });
+    setUtm(entries);
+  }, []);
+
+  function track(name: string, props: Record<string, string | number | boolean | null> = {}) {
+    try {
+      (window as typeof window & { plausible?: (name: string, options: { props: Record<string, string | number | boolean | null> }) => void })
+        .plausible?.(name, { props });
+    } catch {}
+  }
+
+  const onClickStore = (store: "ios"|"android"|"testflight"|"apk") => {
+    track("store_click", { ...utm, store, version: VERSION });
+  };
+
+  return (  
+    <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+      <PageHeader />
+      {/* HERO */}
+      <section className="mx-auto max-w-5xl px-6 pt-16 pb-8">
+        <div className="flex items-start gap-4">
+          <Image
+            src="/manabii/app_icon.png"
+            alt="Manabii アイコン"
+            width={72}
+            height={72}
+            className="rounded-2xl shadow-sm"
+            priority
+          />
+          <div>
+            <Badge>新しく公開</Badge>
+            <h1 className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight">
+              英語子育てを<span className="underline decoration-amber-400 decoration-4">見える化</span>するアプリ
+            </h1>
+            <p className="mt-3 text-lg leading-relaxed text-slate-700">
+              1つのスライダーで<strong>英語：日本語</strong>のバランスを記録。週次グラフと単語メモで、毎日の小さな前進を実感できます。
+            </p>
+          </div>
+        </div>
+
+        {/* Store CTAs */}
+        <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
+          {/* iOS primary — show button on mobile, QR on desktop/laptop */}
+          {IOS_APP_URL && isMobile !== null && (
+            isMobile ? (
+              <a
+                href={iosUrlWithUtm}
+                onClick={() => onClickStore("ios")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3 text-white shadow-sm hover:opacity-90"
+              >
+                <StoreIcon /> App Store で入手
+              </a>
+            ) : (
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(iosUrlWithUtm)}`}
+                  alt="iPhone で読み取って App Store を開く"
+                  width={200}
+                  height={200}
+                  className="rounded-lg border border-slate-200"
+                  onLoad={() => track("qr_shown", { ...utm, store: "ios", version: VERSION })}
+                />
+                <div className="min-w-0">
+                  <div className="text-sm font-medium text-slate-800">
+                    iPhoneでQRコードを読み取ってダウンロード
+                  </div>
+                  <div className="mt-1 text-xs text-slate-600 break-all">
+                    {iosUrlWithUtm}
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      onClick={onCopyIosLink}
+                      className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs shadow-sm hover:border-slate-400"
+                    >
+                      リンクをコピー
+                    </button>
+                    <a
+                      href={iosUrlWithUtm}
+                      onClick={() => track("ios_fallback_click", { ...utm, version: VERSION })}
+                      className="rounded-xl bg-slate-900 px-3 py-2 text-xs text-white shadow-sm hover:opacity-90"
+                    >
+                      App Store を開く（デスクトップ）
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )
+          )}
+
+          {/* Android — same mobile/desktop split + QR */}
+          {ANDROID_PLAY_URL && isMobile !== null ? (
+            isMobile ? (
+              <a
+                href={androidUrlWithUtm}
+                onClick={() => onClickStore("android")}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 py-3 shadow-sm hover:border-slate-400"
+              >
+                <AndroidIcon /> Google Play で入手
+              </a>
+            ) : (
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(androidUrlWithUtm)}`}
+                  alt="Android で読み取って Google Play を開く"
+                  width={200}
+                  height={200}
+                  className="rounded-lg border border-slate-200"
+                  onLoad={() => track("qr_shown", { ...utm, store: "android", version: VERSION })}
+                />
+                <div className="min-w-0">
+                  <div className="text-sm font-medium text-slate-800">
+                    AndroidでQRコードを読み取ってダウンロード
+                  </div>
+                  <div className="mt-1 text-xs text-slate-600 break-all">
+                    {androidUrlWithUtm}
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      onClick={onCopyAndroidLink}
+                      className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs shadow-sm hover:border-slate-400"
+                    >
+                      リンクをコピー
+                    </button>
+                    <a
+                      href={androidUrlWithUtm}
+                      onClick={() => track("android_fallback_click", { ...utm, version: VERSION })}
+                      className="rounded-xl bg-slate-900 px-3 py-2 text-xs text-white shadow-sm hover:opacity-90"
+                    >
+                      Google Play を開く（デスクトップ）
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )
+          ) : ANDROID_APK_URL ? (
+            <a
+              href={ANDROID_APK_URL}
+              onClick={() => onClickStore("apk")}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 py-3 shadow-sm hover:border-slate-400"
+            >
+              <AndroidIcon /> APK をダウンロード
+            </a>
+          ) : (
+            <div className="self-center text-sm text-slate-500">Android は近日公開</div>
+          )}
+        </div>
+
+        <div className="mt-3 text-xs text-slate-500">
+          ※ リリース初期のため、混雑時はダウンロードや初回ログインに時間がかかる場合があります。
+        </div>
+      </section>
+
+      {/* Screenshots */}
+      <section className="mx-auto max-w-5xl px-6 pb-10">
+        <h2 className="text-2xl font-semibold">アプリ画面</h2>
+        <p className="mt-2 text-sm text-slate-700">実際のスクリーンショットです。</p>
+        <div className="mt-5 grid gap-6 sm:grid-cols-3">
+          <Shot src="/manabii/iphone_1.png" alt="ホーム（当日のバランス・最近の単語）" />
+          <Shot src="/manabii/iphone_2.png" alt="レビュー（週次バランス）" />
+          <Shot src="/manabii/iphone_3.png" alt="学習した単語一覧" />
+        </div>
+      </section>
+
+      {/* Value Props */}
+      <section className="mx-auto max-w-5xl px-6 pb-8">
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Feature title="1スライダー入力">
+            とにかく早い。毎日1回、英語割合(%)だけでOK。続けやすいUX。
+          </Feature>
+          <Feature title="バランスが見える">
+            週次グラフで英語と日本語の比率を可視化。やり過ぎ/足りないがひと目で分かる。
+          </Feature>
+          <Feature title="前進の記録">
+            単語メモで「できた」を積み上げ。家族で共有する楽しさも。
+          </Feature>
+        </div>
+      </section>
+
+      {/* FAQ / Support */}
+      <section className="mx-auto max-w-5xl px-6 pb-16">
+        <h2 className="text-2xl font-semibold">よくある質問</h2>
+        <div className="mt-4 grid gap-4">
+          <Faq q="課金はありますか？">
+            MVP版は基本機能を無料でご利用いただけます。将来的にサブスクを検討中です。
+          </Faq>
+          <Faq q="データは安全ですか？">
+            匿名ログインに対応。詳細は <Link href="/privacy" className="underline hover:opacity-80">プライバシー</Link> をご覧ください。
+          </Faq>
+          <Faq q="問い合わせ・不具合報告は？">
+            <a className="underline hover:opacity-80" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> までご連絡ください。
+          </Faq>
+        </div>
+      </section>
+
+      <SiteFooter />
+
+      <Flash
+        open={flash.open}
+        kind={flash.kind}
+        text={flash.text}
+        onClose={() => setFlash((s) => ({ ...s, open: false }))}
+      />
+    </main>
+  );
+}
+
+/* -------- UI bits -------- */
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-sm font-medium text-amber-900">
+      {children}
+    </span>
+  );
+}
+
+function Feature({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="text-base font-semibold">{title}</div>
+      <div className="mt-2 text-sm leading-relaxed text-slate-700">{children}</div>
+    </div>
+  );
+}
+
+function Faq({ q, children }: { q: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div className="font-medium">{q}</div>
+      <div className="mt-1 text-sm text-slate-700">{children}</div>
+    </div>
+  );
+}
+
+function Shot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <Image src={src} alt={alt} width={800} height={1600} className="w-full h-auto" />
+    </div>
+  );
+}
+
+function StoreIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="opacity-90">
+      <path d="M12 2l4 4H8l4-4zm7 6v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8h14z" fill="currentColor"/>
+    </svg>
+  );
+}
+function AndroidIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="opacity-90">
+      <path d="M17.6 9.48l1.84-3.2-.88-.48-1.9 3.3a7.47 7.47 0 0 0-7.32 0L6.44 5.8l-.88.48 1.84 3.2A6.98 6.98 0 0 0 5 15h14a6.98 6.98 0 0 0-1.4-5.52zM7 16v3a1 1 0 1 0 2 0v-3H7zm8 0v3a1 1 0 1 0 2 0v-3h-2z" fill="currentColor"/>
+    </svg>
+  );
+}
+
+/* Flash reused from your page */
+function Flash({ open, kind, text, onClose }: { open: boolean; kind: 'success'|'error'; text: string; onClose: () => void }) {
+  React.useEffect(() => {
+    if (!open) return;
+    const id = setTimeout(onClose, 2200);
+    return () => clearTimeout(id);
+  }, [open, onClose]);
+
+  const bg = kind === "success" ? "bg-emerald-600" : "bg-rose-600";
+
+  return (
+    <div
+      className={`fixed left-1/2 top-6 z-[60] -translate-x-1/2 transition-all duration-300
+                  ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+      role="status" aria-live="polite"
+    >
+      <div className={`rounded-xl ${bg} text-white px-4 py-2 shadow-lg`}>{text}</div>
+    </div>
+  );
+}

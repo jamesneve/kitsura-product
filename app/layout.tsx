@@ -1,0 +1,63 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
+
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "英語ふれあい記録アプリ｜毎日の割合をかんたん見える化",
+  description:
+    "英語と日本語のふれあい時間をスライダーで記録。バランスと成長をシンプルに見える化します。",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
+  alternates: {
+    canonical: "https://manabii.app/",
+    languages: {
+      ja: "https://manabii.app/",
+      en: "https://manabii.app/en",
+      "x-default": "https://manabii.app/",
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "manabii.dev";
+  const isProd = process.env.NODE_ENV === "production";
+
+  return (
+    <html lang="ja">
+      <head>
+        {isProd && (
+          <Script
+            defer
+            data-domain={domain}
+            data-api="/api/event"
+            src="/js/script.outbound-links.tagged-events.js"
+          />
+        )}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-17513662719" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17513662719');
+          `}
+        </Script>
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
+}
