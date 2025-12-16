@@ -20,7 +20,7 @@ export default function SiteFooterEN({ basePath = "" }: Props) {
           <Link href={to("/en/support")} className="hover:underline">Support</Link>
           <Link href={to("/en/delete-account")} className="hover:underline">Delete account</Link>
           <span className="hidden sm:inline">
-            | Keywords: bilingual parenting / exposure balance / word log
+            | Keywords: language learning / study tracking / streaks / progress charts / skill balance
           </span>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function SiteFooter() {
           <Link href="/support" className="hover:underline">サポート</Link>
           <Link href="/delete-account" className="hover:underline">アカウント削除</Link>
           <span className="hidden sm:inline">
-            ｜キーワード: 英語育児 / バイリンガル / 露出バランス / 単語メモ
+            ｜キーワード: 語学学習 / 学習記録 / ストリーク / 進捗管理 / 4技能バランス
           </span>
         </div>
       </div>
