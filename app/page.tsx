@@ -3,33 +3,30 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "@/components/PageHeader";
-import SiteFooter from "@/components/SiteFooter";
+import PageHeaderEN from "@/components/PageHeaderEN";
+import SiteFooterEN from "@/components/SiteFooterEN";
 
-/** =========================
- *  CONFIG: fill these in
- *  ========================= */
 const VERSION = "lp-download-v1";
-const IOS_APP_URL = "https://apps.apple.com/app/id6753667549";         
-const ANDROID_PLAY_URL = "https://play.google.com/store/apps/details?id=jp.aisara.kitsura&hl=ja"; // ← added
-const ANDROID_APK_URL = "";                                            
+const IOS_APP_URL = "https://apps.apple.com/app/id6753667549";
+const ANDROID_PLAY_URL = "https://play.google.com/store/apps/details?id=jp.aisara.kitsura&hl=en";
+const ANDROID_APK_URL = "";
 const CONTACT_EMAIL = "support@aisara.jp";
 
-/** =========================
- *  Landing page (JP)
- *  ========================= */
-export default function EnglishBalanceLandingJP() {
+export default function EnglishBalanceLandingEN() {
   const [utm, setUtm] = React.useState<Record<string, string>>({});
-  const [flash, setFlash] = React.useState<{open: boolean; kind: 'success'|'error'; text: string}>({ open: false, kind: "success", text: "" });
+  const [flash, setFlash] = React.useState<{ open: boolean; kind: "success" | "error"; text: string }>({
+    open: false,
+    kind: "success",
+    text: "",
+  });
   const [isMobile, setIsMobile] = React.useState<boolean | null>(null);
 
   React.useEffect(() => {
-    // very light UA check; good enough for this CTA split
     const ua = navigator.userAgent || "";
     const mobile = /iPhone|iPad|iPod|Android/i.test(ua);
     setIsMobile(mobile);
   }, []);
-  
+
   const iosUrlWithUtm = React.useMemo(() => {
     if (!IOS_APP_URL) return "";
     const search = typeof window !== "undefined" ? window.location.search : "";
@@ -43,7 +40,6 @@ export default function EnglishBalanceLandingJP() {
     }
   }, []);
 
-  // === NEW: Android URL with UTM passthrough ===
   const androidUrlWithUtm = React.useMemo(() => {
     if (!ANDROID_PLAY_URL) return "";
     const search = typeof window !== "undefined" ? window.location.search : "";
@@ -67,7 +63,6 @@ export default function EnglishBalanceLandingJP() {
     }
   };
 
-  // === NEW: Android copy link ===
   const onCopyAndroidLink = async () => {
     try {
       await navigator.clipboard.writeText(androidUrlWithUtm);
@@ -90,19 +85,20 @@ export default function EnglishBalanceLandingJP() {
 
   function track(name: string, props: Record<string, string | number | boolean | null> = {}) {
     try {
-      (window as typeof window & { plausible?: (name: string, options: { props: Record<string, string | number | boolean | null> }) => void })
-        .plausible?.(name, { props });
+      (window as typeof window & { plausible?: (name: string, options: { props: Record<string, string | number | boolean | null> }) => void }).plausible?.(
+        name,
+        { props }
+      );
     } catch {}
   }
 
-  const onClickStore = (store: "ios"|"android"|"testflight"|"apk") => {
+  const onClickStore = (store: "ios" | "android" | "testflight" | "apk") => {
     track("store_click", { ...utm, store, version: VERSION });
   };
 
-  return (  
+  return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-      <PageHeader />
-      {/* HERO */}
+      <PageHeaderEN />
       <section className="mx-auto max-w-5xl px-6 pt-16 pb-8">
         <div className="flex items-start gap-4">
           <Image
@@ -114,66 +110,60 @@ export default function EnglishBalanceLandingJP() {
             priority
           />
           <div>
-            <Badge>新しく公開</Badge>
+            <Badge>新登場</Badge>
             <h1 className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight">
-              英語子育てを<span className="underline decoration-amber-400 decoration-4">見える化</span>するアプリ
+              語学学習を{" "}
+              <span className="underline decoration-amber-400 decoration-4">続けやすくする</span>
             </h1>
             <p className="mt-3 text-lg leading-relaxed text-slate-700">
-              1つのスライダーで<strong>英語：日本語</strong>のバランスを記録。週次グラフと単語メモで、毎日の小さな前進を実感できます。
+              その日に勉強した内容を数秒で記録。シンプルなグラフで進捗を確認し、学習計画とストリーク機能でモチベーションを保てます。
             </p>
           </div>
         </div>
 
-        {/* Store CTAs */}
-        <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
-          {/* iOS primary — show button on mobile, QR on desktop/laptop */}
-          {IOS_APP_URL && isMobile !== null && (
-            isMobile ? (
-              <a
-                href={iosUrlWithUtm}
-                onClick={() => onClickStore("ios")}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3 text-white shadow-sm hover:opacity-90"
-              >
-                <StoreIcon /> App Store で入手
-              </a>
-            ) : (
-              <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(iosUrlWithUtm)}`}
-                  alt="iPhone で読み取って App Store を開く"
-                  width={200}
-                  height={200}
-                  className="rounded-lg border border-slate-200"
-                  onLoad={() => track("qr_shown", { ...utm, store: "ios", version: VERSION })}
-                />
-                <div className="min-w-0">
-                  <div className="text-sm font-medium text-slate-800">
-                    iPhoneでQRコードを読み取ってダウンロード
-                  </div>
-                  <div className="mt-1 text-xs text-slate-600 break-all">
-                    {iosUrlWithUtm}
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <button
-                      onClick={onCopyIosLink}
-                      className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs shadow-sm hover:border-slate-400"
-                    >
-                      リンクをコピー
-                    </button>
-                    <a
-                      href={iosUrlWithUtm}
-                      onClick={() => track("ios_fallback_click", { ...utm, version: VERSION })}
-                      className="rounded-xl bg-slate-900 px-3 py-2 text-xs text-white shadow-sm hover:opacity-90"
-                    >
-                      App Store を開く（デスクトップ）
-                    </a>
-                  </div>
+        {/* <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
+          {IOS_APP_URL && isMobile !== null && (isMobile ? (
+            <a
+              href={iosUrlWithUtm}
+              onClick={() => onClickStore("ios")}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-6 py-3 text-white shadow-sm hover:opacity-90"
+            >
+              <StoreIcon /> App Store でダウンロード
+            </a>
+          ) : (
+            <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(iosUrlWithUtm)}`}
+                alt="iPhone のカメラで QR コードを読み取ってダウンロード"
+                width={200}
+                height={200}
+                className="rounded-lg border border-slate-200"
+                onLoad={() => track("qr_shown", { ...utm, store: "ios", version: VERSION })}
+              />
+              <div className="min-w-0">
+                <div className="text-sm font-medium text-slate-800">
+                  iPhone のカメラで QR コードを読み取ってダウンロード
+                </div>
+                <div className="mt-1 text-xs text-slate-600 break-all">{iosUrlWithUtm}</div>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    onClick={onCopyIosLink}
+                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs shadow-sm hover:border-slate-400"
+                  >
+                    リンクをコピー
+                  </button>
+                  <a
+                    href={iosUrlWithUtm}
+                    onClick={() => track("ios_fallback_click", { ...utm, version: VERSION })}
+                    className="rounded-xl bg-slate-900 px-3 py-2 text-xs text-white shadow-sm hover:opacity-90"
+                  >
+                    App Store を開く（PC）
+                  </a>
                 </div>
               </div>
-            )
-          )}
+            </div>
+          ))}
 
-          {/* Android — same mobile/desktop split + QR */}
           {ANDROID_PLAY_URL && isMobile !== null ? (
             isMobile ? (
               <a
@@ -187,7 +177,7 @@ export default function EnglishBalanceLandingJP() {
               <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                 <img
                   src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(androidUrlWithUtm)}`}
-                  alt="Android で読み取って Google Play を開く"
+                  alt="Android 端末で QR コードを読み取って Google Play を開く"
                   width={200}
                   height={200}
                   className="rounded-lg border border-slate-200"
@@ -195,11 +185,9 @@ export default function EnglishBalanceLandingJP() {
                 />
                 <div className="min-w-0">
                   <div className="text-sm font-medium text-slate-800">
-                    AndroidでQRコードを読み取ってダウンロード
+                    Android 端末で QR コードを読み取ってダウンロード
                   </div>
-                  <div className="mt-1 text-xs text-slate-600 break-all">
-                    {androidUrlWithUtm}
-                  </div>
+                  <div className="mt-1 text-xs text-slate-600 break-all">{androidUrlWithUtm}</div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     <button
                       onClick={onCopyAndroidLink}
@@ -212,7 +200,7 @@ export default function EnglishBalanceLandingJP() {
                       onClick={() => track("android_fallback_click", { ...utm, version: VERSION })}
                       className="rounded-xl bg-slate-900 px-3 py-2 text-xs text-white shadow-sm hover:opacity-90"
                     >
-                      Google Play を開く（デスクトップ）
+                      Google Play を開く（PC）
                     </a>
                   </div>
                 </div>
@@ -227,58 +215,63 @@ export default function EnglishBalanceLandingJP() {
               <AndroidIcon /> APK をダウンロード
             </a>
           ) : (
-            <div className="self-center text-sm text-slate-500">Android は近日公開</div>
+            <div className="self-center text-sm text-slate-500">Android 版は近日公開予定です</div>
           )}
-        </div>
+        </div> */}
 
         <div className="mt-3 text-xs text-slate-500">
-          ※ リリース初期のため、混雑時はダウンロードや初回ログインに時間がかかる場合があります。
+          リリース初期は、混雑時にダウンロードや初回ログインに時間がかかる場合があります。
         </div>
       </section>
 
-      {/* Screenshots */}
       <section className="mx-auto max-w-5xl px-6 pb-10">
-        <h2 className="text-2xl font-semibold">アプリ画面</h2>
-        <p className="mt-2 text-sm text-slate-700">実際のスクリーンショットです。</p>
+        <h2 className="text-2xl font-semibold">スクリーンショット</h2>
+        <p className="mt-2 text-sm text-slate-700">実際のアプリ画面です。</p>
         <div className="mt-5 grid gap-6 sm:grid-cols-3">
-          <Shot src="/kitsura/iphone_1.png" alt="ホーム（当日のバランス・最近の単語）" />
-          <Shot src="/kitsura/iphone_2.png" alt="レビュー（週次バランス）" />
-          <Shot src="/kitsura/iphone_3.png" alt="学習した単語一覧" />
+          <Shot src="/kitsura/iphone_1_en.png" alt="毎日の学習記録とストリークの画面" />
+          <Shot src="/kitsura/iphone_2_en.png" alt="学習時間の推移を確認できる週間グラフ" />
+          <Shot src="/kitsura/iphone_3_en.png" alt="学習計画とアクティビティ詳細の画面" />
         </div>
       </section>
 
-      {/* Value Props */}
       <section className="mx-auto max-w-5xl px-6 pb-8">
         <div className="grid gap-4 sm:grid-cols-3">
-          <Feature title="1スライダー入力">
-            とにかく早い。毎日1回、英語割合(%)だけでOK。続けやすいUX。
+          <Feature title="すぐ書ける学習ログ">
+            その日勉強した内容と時間を、数タップで素早く記録できます。学習の邪魔にならない、シンプルな入力体験です。
           </Feature>
-          <Feature title="バランスが見える">
-            週次グラフで英語と日本語の比率を可視化。やり過ぎ/足りないがひと目で分かる。
+          <Feature title="進捗をひと目で把握">
+            日別・週別のグラフで、どれくらい勉強できているかがひと目で分かります。学習量の偏りにも気付きやすくなります。
           </Feature>
-          <Feature title="前進の記録">
-            単語メモで「できた」を積み上げ。家族で共有する楽しさも。
+          <Feature title="ストリークとバランス">
+            ストリークで毎日の継続を見える化。4技能のバランスも確認できるので、どのスキルを強化すべきかが分かります。
           </Feature>
         </div>
       </section>
 
-      {/* FAQ / Support */}
       <section className="mx-auto max-w-5xl px-6 pb-16">
         <h2 className="text-2xl font-semibold">よくある質問</h2>
         <div className="mt-4 grid gap-4">
-          <Faq q="課金はありますか？">
-            MVP版は基本機能を無料でご利用いただけます。将来的にサブスクを検討中です。
+          <Faq q="アプリは無料で使えますか？">
+            現在のバージョンでは、主要な機能を無料でお使いいただけます。今後、一部の追加機能については有料オプションやサブスクリプションを検討しています。
           </Faq>
-          <Faq q="データは安全ですか？">
-            匿名ログインに対応。詳細は <Link href="/privacy" className="underline hover:opacity-80">プライバシー</Link> をご覧ください。
+          <Faq q="データの安全性は大丈夫ですか？">
+            プライバシーを大切にしています。サインインはシンプルに保ちつつ、学習データはアプリの機能提供のためだけに利用します。詳しくは{" "}
+            <Link href="/privacy" className="underline hover:opacity-80">
+              プライバシーポリシー
+            </Link>
+            をご確認ください。
           </Faq>
-          <Faq q="問い合わせ・不具合報告は？">
-            <a className="underline hover:opacity-80" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> までご連絡ください。
+          <Faq q="サポートや不具合報告の連絡先はどこですか？">
+            サポートや不具合のご連絡は、メール{" "}
+            <a className="underline hover:opacity-80" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
+            </a>
+            が一番スムーズです。
           </Faq>
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooterEN />
 
       <Flash
         open={flash.open}
@@ -290,7 +283,6 @@ export default function EnglishBalanceLandingJP() {
   );
 }
 
-/* -------- UI bits -------- */
 function Badge({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-sm font-medium text-amber-900">
@@ -328,20 +320,33 @@ function Shot({ src, alt }: { src: string; alt: string }) {
 function StoreIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="opacity-90">
-      <path d="M12 2l4 4H8l4-4zm7 6v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8h14z" fill="currentColor"/>
-    </svg>
-  );
-}
-function AndroidIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="opacity-90">
-      <path d="M17.6 9.48l1.84-3.2-.88-.48-1.9 3.3a7.47 7.47 0 0 0-7.32 0L6.44 5.8l-.88.48 1.84 3.2A6.98 6.98 0 0 0 5 15h14a6.98 6.98 0 0 0-1.4-5.52zM7 16v3a1 1 0 1 0 2 0v-3H7zm8 0v3a1 1 0 1 0 2 0v-3h-2z" fill="currentColor"/>
+      <path d="M12 2l4 4H8l4-4zm7 6v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8h14z" fill="currentColor" />
     </svg>
   );
 }
 
-/* Flash reused from your page */
-function Flash({ open, kind, text, onClose }: { open: boolean; kind: 'success'|'error'; text: string; onClose: () => void }) {
+function AndroidIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="opacity-90">
+      <path
+        d="M17.6 9.48l1.84-3.2-.88-.48-1.9 3.3a7.47 7.47 0 0 0-7.32 0L6.44 5.8l-.88.48 1.84 3.2A6.98 6.98 0 0 0 5 15h14a6.98 6.98 0 0 0-1.4-5.52zM7 16v3a1 1 0 1 0 2 0v-3H7zm8 0v3a1 1 0 1 0 2 0v-3h-2z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function Flash({
+  open,
+  kind,
+  text,
+  onClose,
+}: {
+  open: boolean;
+  kind: "success" | "error";
+  text: string;
+  onClose: () => void;
+}) {
   React.useEffect(() => {
     if (!open) return;
     const id = setTimeout(onClose, 2200);
@@ -352,9 +357,11 @@ function Flash({ open, kind, text, onClose }: { open: boolean; kind: 'success'|'
 
   return (
     <div
-      className={`fixed left-1/2 top-6 z-[60] -translate-x-1/2 transition-all duration-300
-                  ${open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
-      role="status" aria-live="polite"
+      className={`fixed left-1/2 top-6 z-[60] -translate-x-1/2 transition-all duration-300 ${
+        open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+      role="status"
+      aria-live="polite"
     >
       <div className={`rounded-xl ${bg} text-white px-4 py-2 shadow-lg`}>{text}</div>
     </div>

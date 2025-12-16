@@ -122,7 +122,7 @@ export default function EnglishBalanceLandingEN() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
+        {/* <div className="mt-8 grid gap-3 sm:grid-cols-[auto_auto]">
           {IOS_APP_URL && isMobile !== null && (isMobile ? (
             <a
               href={iosUrlWithUtm}
@@ -214,7 +214,7 @@ export default function EnglishBalanceLandingEN() {
           ) : (
             <div className="self-center text-sm text-slate-500">Android coming soon</div>
           )}
-        </div>
+        </div> */}
 
         <div className="mt-3 text-xs text-slate-500">
           During the initial release, downloads or first-time logins may take longer during peak times.
@@ -237,10 +237,10 @@ export default function EnglishBalanceLandingEN() {
             Record each study session in a few taps. Log what you worked on and how long you studied, without getting in the way.
           </Feature>
           <Feature title="Progress at a glance">
-            See how your time adds up with clear daily and weekly charts, plus an overview of your skill balance over time.
+            See how your time adds up with clear daily and weekly charts. Build study streaks and schedule future sessions.
           </Feature>
           <Feature title="Streaks and planning">
-            Build study streaks and schedule future sessions so you always know what to work on next.
+            Visualise the balance between the four major language skills, so you know you're not leaving one behind.
           </Feature>
         </div>
       </section>
