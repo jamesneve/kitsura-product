@@ -7,9 +7,9 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "英語ふれあい記録アプリ｜毎日の割合をかんたん見える化",
+  title: "Kitsura｜語学学習の記録・見える化アプリ",
   description:
-    "英語と日本語のふれあい時間をスライダーで記録。バランスと成長をシンプルに見える化します。",
+    "毎日の学習内容を数秒で記録。シンプルなグラフで進捗と4技能のバランスを見える化し、ストリークと学習計画で継続をサポートします。",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [

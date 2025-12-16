@@ -1,7 +1,7 @@
 {
   "name": "Kitsura",
   "short_name": "Kitsura",
-  "description": "英語×日本語のバランスを見える化するアプリ。",
+  "description": "語学学習の記録・見える化アプリ",
   "lang": "ja",
   "start_url": "/",
   "display": "standalone",

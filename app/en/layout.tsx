@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import "../globals.css"; // note the path (we're in /en)
+import "../globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kitsura – Make English parenting visible with simple daily tracking",
+  title: "Kitsura – Track your language study and stay consistent",
   description:
-    "Log the balance of English and Japanese with a single slider. See weekly trends and track words to feel daily progress.",
+    "Log your language study in seconds. Track your progress with clear charts, plan future sessions, and build streaks to stay motivated.",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
