@@ -239,7 +239,7 @@ export default function EnglishBalanceLandingEN() {
           <Feature title="Progress at a glance">
             See how your time adds up with clear daily and weekly charts. Build study streaks and schedule future sessions.
           </Feature>
-          <Feature title="Streaks and planning">
+          <Feature title="Language balance">
             Visualise the balance between the four major language skills, so you know you're not leaving one behind.
           </Feature>
         </div>
