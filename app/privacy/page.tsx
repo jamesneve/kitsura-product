@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 export default function PrivacyPage() {
-  const updated = "2025-10-11"; // ← 最終更新日を更新
+  const updated = "2025-12-16"; // ← 最終更新日を更新
   return ( 
     <>
     <PageHeader />

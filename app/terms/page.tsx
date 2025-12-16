@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 export default function TermsPage() {
-  const updated = "2025-10-11"; // ← 更新日に合わせて編集
+  const updated = "2025-12-16"; // ← 更新日に合わせて編集
   return (
     <>
     <PageHeader />

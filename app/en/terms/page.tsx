@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 export default function TermsPageEN() {
-  const updated = "2025-10-11"; // Update as needed
+  const updated = "2025-12-16"; // Update as needed
   return (
     <>
       <PageHeaderEN />

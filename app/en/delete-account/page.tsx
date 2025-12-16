@@ -18,9 +18,9 @@ export const metadata = {
 };
 
 export default function DeleteAccountPageEN() {
-  const updated = "2025-10-15"; // Update if necessary
+  const updated = "2025-12-16"; // Update if necessary
   const developer = "Aisara (JP)";
-  const appName = "Kitsura — English–Japanese Exposure Balance";
+  const appName = "Kitsura";
 
   return (
     <>
