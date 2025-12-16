@@ -228,9 +228,9 @@ export default function EnglishBalanceLanding() {
         <h2 className="text-2xl font-semibold">スクリーンショット</h2>
         <p className="mt-2 text-sm text-slate-700">実際のアプリ画面です。</p>
         <div className="mt-5 grid gap-6 sm:grid-cols-3">
-          <Shot src="/kitsura/iphone_1_en.png" alt="毎日の学習記録とストリークの画面" />
-          <Shot src="/kitsura/iphone_2_en.png" alt="学習時間の推移を確認できる週間グラフ" />
-          <Shot src="/kitsura/iphone_3_en.png" alt="学習計画とアクティビティ詳細の画面" />
+          <Shot src="/kitsura/iphone_1.png" alt="毎日の学習記録とストリークの画面" />
+          <Shot src="/kitsura/iphone_2.png" alt="学習時間の推移を確認できる週間グラフ" />
+          <Shot src="/kitsura/iphone_3.png" alt="学習計画とアクティビティ詳細の画面" />
         </div>
       </section>
 
