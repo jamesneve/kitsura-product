@@ -3,8 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeaderEN from "@/components/PageHeaderEN";
-import SiteFooterEN from "@/components/SiteFooterEN";
+import PageHeader from "@/components/PageHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const VERSION = "lp-download-v1";
 const IOS_APP_URL = "https://apps.apple.com/app/id6753667549";
@@ -12,7 +12,7 @@ const ANDROID_PLAY_URL = "https://play.google.com/store/apps/details?id=jp.aisar
 const ANDROID_APK_URL = "";
 const CONTACT_EMAIL = "support@aisara.jp";
 
-export default function EnglishBalanceLandingEN() {
+export default function EnglishBalanceLanding() {
   const [utm, setUtm] = React.useState<Record<string, string>>({});
   const [flash, setFlash] = React.useState<{ open: boolean; kind: "success" | "error"; text: string }>({
     open: false,
@@ -98,7 +98,7 @@ export default function EnglishBalanceLandingEN() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-      <PageHeaderEN />
+      <PageHeader />
       <section className="mx-auto max-w-5xl px-6 pt-16 pb-8">
         <div className="flex items-start gap-4">
           <Image
@@ -271,7 +271,7 @@ export default function EnglishBalanceLandingEN() {
         </div>
       </section>
 
-      <SiteFooterEN />
+      <SiteFooter />
 
       <Flash
         open={flash.open}
