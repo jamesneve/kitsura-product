@@ -17,7 +17,7 @@ export const metadata = {
 };
 
 export default function PrivacyPage() {
-  const updated = "2025-10-11"; // ← Update when last revised
+  const updated = "2025-12-16"; // ← Update when last revised
   return (
     <>
     <PageHeaderEN />
@@ -179,8 +179,8 @@ export default function PrivacyPage() {
       <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-xl font-semibold">8. Use by Minors</h2>
         <p className="mt-2 text-slate-700">
-          This service is intended for parents and is not designed to collect
-          personal information directly from children.
+          This service is intended for adults and is not designed to collect
+          personal information from minors.
         </p>
       </section>
 

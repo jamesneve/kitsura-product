@@ -242,8 +242,8 @@ export default function TermsPageEN() {
         <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-xl font-semibold">14. Use by Minors</h2>
           <p className="mt-2">
-            The Service is intended for guardians/parents and is not designed to
-            directly collect personal information from children. Guardians use the
+            The Service is intended for adults and is not designed to
+            directly collect personal information from minors. Adults use the
             Service at their own responsibility.
           </p>
         </section>

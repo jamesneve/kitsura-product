@@ -102,10 +102,11 @@ export default function DeleteAccountPage() {
           <h2 className="text-lg font-semibold">削除されるデータ</h2>
           <ul className="mt-2 list-disc pl-6 space-y-1 text-slate-700">
             <li>アカウント識別子（Firebase 匿名ログイン UID）</li>
-            <li>お子さまのプロフィール・名前等（アプリ内で登録したもの）</li>
-            <li>日次記録・学習メモ・スライダー設定などの利用データ</li>
+            <li>プロフィールおよびすべての個人情報</li>
+            <li>学習ログなど、ユーザーに関連するすべてのデータベース記録</li>
+            <li>ユーザーに関連する利用状況や分析データ</li>
             <li>当社サーバー（Cloud SQL 等）上のアプリ関連レコード</li>
-            <li>（該当する場合）ユーザーがアップロードした添付情報</li>
+            <li>（該当する場合）ユーザーがアップロードしたファイルや添付情報</li>
           </ul>
           <p className="mt-2 text-xs text-slate-500">
             依頼確定後、通常数営業日以内に削除処理を実施します。

@@ -54,7 +54,7 @@ export default function SupportPage() {
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 className="text-xl font-semibold">アプリ情報</h2>
           <ul className="mt-2 list-disc pl-6 space-y-1 text-slate-700">
-            <li>アプリ名：Kitsura — 英語×日本語 露出バランス</li>
+            <li>アプリ名：Kitsura</li>
             <li>対象OS：iOS 15 以上（今後変更の可能性あり）</li>
             <li>
               バージョン確認：
@@ -79,18 +79,6 @@ export default function SupportPage() {
               </ol>
               <p className="mt-2">
                 解決しない場合は、端末名・iOS バージョン・アプリバージョンを添えてご連絡ください。
-              </p>
-            </div>
-          </details>
-
-          <details className="mt-3">
-            <summary className="cursor-pointer font-medium">
-              英語・日本語スライダーが反応しない / 保存されない
-            </summary>
-            <div className="mt-2 text-sm text-slate-700">
-              <p>
-                最新バージョンかご確認のうえ、アプリ再起動をお試しください。
-                事象が継続する場合、発生手順（どの画面で、どの操作をしたか）を添えてご連絡ください。
               </p>
             </div>
           </details>

@@ -100,8 +100,9 @@ export default function DeleteAccountPageEN() {
             <h2 className="text-lg font-semibold">Data That Will Be Deleted</h2>
             <ul className="mt-2 list-disc pl-6 space-y-1 text-slate-700">
               <li>Account identifier (Firebase anonymous login UID)</li>
-              <li>Child profiles and names registered in the app</li>
-              <li>Daily records, word memos, slider settings, and usage data</li>
+              <li>User profile and all personal information</li>
+              <li>All database records such as learning logs related to the user</li>
+              <li>Usage and analytics data related to the user</li>
               <li>App-related records stored on our servers (Cloud SQL, etc.)</li>
               <li>(If applicable) Any files or attachments uploaded by the user</li>
             </ul>

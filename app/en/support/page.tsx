@@ -55,7 +55,7 @@ export default function SupportPageEN() {
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <h2 className="text-xl font-semibold">App Information</h2>
             <ul className="mt-2 list-disc pl-6 space-y-1 text-slate-700">
-              <li>App name: Kitsura — English–Japanese Exposure Balance</li>
+              <li>App name: Kitsura</li>
               <li>Supported OS: iOS 15 or later (subject to change)</li>
               <li>
                 To check your app version:
@@ -81,19 +81,6 @@ export default function SupportPageEN() {
                 <p className="mt-2">
                   If the problem continues, please contact us with your device model,
                   iOS version, and app version.
-                </p>
-              </div>
-            </details>
-
-            <details className="mt-3">
-              <summary className="cursor-pointer font-medium">
-                The English–Japanese slider doesn’t respond or save
-              </summary>
-              <div className="mt-2 text-sm text-slate-700">
-                <p>
-                  Please ensure you’re using the latest app version, then restart the app.
-                  If the issue continues, include the reproduction steps (which screen and actions)
-                  when contacting us.
                 </p>
               </div>
             </details>

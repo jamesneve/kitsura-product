@@ -179,7 +179,7 @@ export default function TermsPage() {
       <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <h2 className="text-xl font-semibold">14. 未成年の利用</h2>
         <p className="mt-2">
-          本サービスは保護者向けであり、児童から直接個人情報を収集することを意図していません。保護者は自己の責任において本サービスを利用してください。
+          本サービスは成人向けであり、未成年者から直接個人情報を収集することを意図していません。成人は自己の責任において本サービスを利用してください。
         </p>
       </section>
 
